@@ -40,15 +40,25 @@ for article in article_elements:
 
 final = {}
 essai = 'test'
-tests = ['1er janvier : Journée Mondiale de la Paix', '2 janvier : Journée Mondiale du proute', '3 fevrier : Journée Mondiale qui tue']
-temp = {}
+tests = ['1er janvier : Journée Mondiale de la Paix', '2 janvier : Journée Mondiale du proute', '3 fevrier : Journée Mondiale qui tue', '3 fevrier : Journée Mondiale sans margs']
+months_dic = []
+dic_test = []
 for test in tests:
     number, month= test.split(' ')[0], test.split(' ')[1]
+    
+    if month not in months_dic:
+        months_dic.append(month)
+    dic_test.append({})
+    
     value = test.split(':')[1]
     number = number.replace('er','')
     number = int(number)
-    temp[number] = value
-    final[month] = temp
-    temp.clear()
+    if number in dic_test[len(months_dic) - 1]:
+    # Gérer le cas où la date existe déjà, en ajoutant la valeur
+        dic_test[len(months_dic) - 1][number] += ',' + value
+    else:
+        dic_test[len(months_dic) - 1][number] = value
+    
+    final[month] = dic_test[len(months_dic) - 1]
 print(final)
-print(temp)
+
