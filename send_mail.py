@@ -1,13 +1,23 @@
 from email.message import EmailMessage
 import ssl
 import smtplib
+from people_celebration import get_lastname
+from day_celebration import get_day_celebration
 
-def core_email(receiver, team_mate):
+lastname = get_lastname()
+tab_celebrations = get_day_celebration()
+str_celebrations = ''
+for celebration in tab_celebrations:
+    str_celebrations += celebration.lstrip() + '\n'
+
+my_mail = "nico.leger99@gmail.com"
+
+def core_email(receiver):
     email_sender = "nico.leger99@gmail.com"
     email_password = "xdbq mtgg pfiq mref"
 
-    subject = "Ton duo pour le nouvel an !!!!"
-    body = "Salut la team ! Ton groupe est composé de {} !!! N'hésitez surtout pas à vous contacter !".format(team_mate)
+    subject = "News Letter Python script"
+    body = "Aujourd'hui c'est la fête des {} ! \n{}".format(lastname, str_celebrations)
 
     em = EmailMessage()
 
@@ -22,3 +32,7 @@ def core_email(receiver, team_mate):
         smtp.login(email_sender, email_password)
         smtp.sendmail(email_sender, receiver, em.as_string())
 
+core_email(my_mail)
+
+    # email_sender = "nico.leger99@gmail.com"
+    # email_password = "xdbq mtgg pfiq mref"

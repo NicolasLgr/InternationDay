@@ -2,17 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 
-url = "https://www.journee-mondiale.com/les-journees-mondiales.htm"
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
-}
-page = requests.get(url, headers=headers)
-soup = BeautifulSoup(page.text, 'html.parser')
-
-response = []
-
-article_elements = soup.find_all('article')
-i = -1
 months_list = []
 
 def transformer_tableau_en_dictionnaire(tableau):
@@ -39,14 +28,24 @@ def transformer_tableau_en_dictionnaire(tableau):
         
     return resultat
 
-for article in article_elements:
-    i += 1
-    fetes = article.find_all('li')
-    mois_valeur = article.find('h1').text
-    for fete in fetes:
-        response.append(fete.find('a').text)
+def get_day_celebration():
+    url = "https://www.journee-mondiale.com/les-journees-mondiales.htm"
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
+    }
+    page = requests.get(url, headers=headers)
+    soup = BeautifulSoup(page.text, 'html.parser')
+    response = []
+    article_elements = soup.find_all('article')
+    i = -1
+    for article in article_elements:
+        i += 1
+        fetes = article.find_all('li')
+        for fete in fetes:
+            response.append(fete.find('a').text)
 
-dict_of_all_celebration = transformer_tableau_en_dictionnaire(response)
-today_month, today_number = months_list[datetime.now().month - 1], datetime.now().day 
-print(dict_of_all_celebration[today_month][today_number])
+    dict_of_all_celebration = transformer_tableau_en_dictionnaire(response)
+    today_month, today_number = months_list[datetime.now().month - 1], datetime.now().day 
+    
+    return dict_of_all_celebration[today_month][today_number]
 
