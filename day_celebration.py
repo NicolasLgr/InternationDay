@@ -1,7 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
+load_dotenv() 
 months_list = []
 
 def transformer_tableau_en_dictionnaire(tableau):
@@ -29,7 +32,7 @@ def transformer_tableau_en_dictionnaire(tableau):
     return resultat
 
 def get_day_celebration():
-    url = "https://www.journee-mondiale.com/les-journees-mondiales.htm"
+    url = os.getenv("URL_DAY_CELEBRATION")
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
     }

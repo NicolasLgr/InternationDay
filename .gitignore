@@ -1,0 +1,24 @@
+# Ignore les fichiers binaires Python
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore les environnements virtuels
+venv/
+env/
+.venv/
+env.bak/
+venv.bak/
+
+# Ignore les fichiers de sauvegarde
+*~
+
+# Ignore les fichiers de cache
+*.swp
+*.swo
+*.swn
+*.swm
+
+# Ignore les fichiers de logs
+*.log
+.env
