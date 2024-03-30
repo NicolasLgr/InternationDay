@@ -1,13 +1,13 @@
 from email.message import EmailMessage
 import ssl
 import smtplib
-from people_celebration import get_lastname
+from people_celebration import get_lastname_json
 from day_celebration import get_day_celebration
 from dotenv import load_dotenv
 import os
 
 load_dotenv() 
-lastname = get_lastname()
+lastname = get_lastname_json()
 tab_celebrations = get_day_celebration()
 str_celebrations = ''
 for celebration in tab_celebrations:
