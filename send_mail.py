@@ -10,6 +10,7 @@ load_dotenv()
 lastname = get_lastname_json()
 tab_celebrations = get_day_celebration()
 str_celebrations = ''
+
 if tab_celebrations != None:
     for celebration in tab_celebrations:
         str_celebrations += celebration.lstrip() + '\n'
