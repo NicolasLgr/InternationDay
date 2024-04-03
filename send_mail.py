@@ -10,8 +10,9 @@ load_dotenv()
 lastname = get_lastname_json()
 tab_celebrations = get_day_celebration()
 str_celebrations = ''
-for celebration in tab_celebrations:
-    str_celebrations += celebration.lstrip() + '\n'
+if tab_celebrations != None:
+    for celebration in tab_celebrations:
+        str_celebrations += celebration.lstrip() + '\n'
 
 my_mail = os.getenv("RECEIVER")
 

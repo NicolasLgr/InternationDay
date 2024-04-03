@@ -50,5 +50,5 @@ def get_day_celebration():
     dict_of_all_celebration = transformer_tableau_en_dictionnaire(response)
     today_month, today_number = months_list[datetime.now().month - 1], datetime.now().day 
     
-    return dict_of_all_celebration[today_month][today_number]
+    return dict_of_all_celebration.get(today_month).get(today_number)
 
