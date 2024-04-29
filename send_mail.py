@@ -5,6 +5,7 @@ from people_celebration import get_lastname_json
 from day_celebration import get_day_celebration
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv() 
 lastname = get_lastname_json()
@@ -15,7 +16,8 @@ if tab_celebrations != None:
     for celebration in tab_celebrations:
         str_celebrations += celebration.lstrip() + '\n'
 
-my_mail = os.getenv("RECEIVER")
+receiver_value = os.getenv("RECEIVER_LIST")
+list_receiver = json.loads(receiver_value)
 
 def core_email(receiver):
     email_sender = os.getenv("SENDER")
@@ -37,4 +39,6 @@ def core_email(receiver):
         smtp.login(email_sender, email_password)
         smtp.sendmail(email_sender, receiver, em.as_string())
 
-core_email(my_mail)
+
+for receiver in list_receiver:
+    core_email(receiver)
