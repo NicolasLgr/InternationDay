@@ -75,5 +75,7 @@ for receiver in list_receiver:
 
             # Envoyer l'email avec le mot spécial
             core_email(receiver, mot_a_envoyer)
+        else:
+            core_email(receiver, None)
     else:
         core_email(receiver)
