@@ -4,7 +4,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 
-load_dotenv() 
+load_dotenv()
 months_list = []
 
 def transformer_tableau_en_dictionnaire(tableau):

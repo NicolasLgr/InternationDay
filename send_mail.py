@@ -8,7 +8,7 @@ import os
 import json
 import random
 
-load_dotenv() 
+load_dotenv()
 lastname = get_lastname_json()
 tab_celebrations = get_day_celebration()
 str_celebrations = ''
@@ -60,10 +60,10 @@ def core_email(receiver, mot=None):
 
 for receiver in list_receiver:
     if mots_disponibles:
-        if receiver == list_receiver[0]:    
+        if receiver == list_receiver[1]:
         # Choisir un mot aléatoire pour le destinataire spécial
             mot = random.choice(mots_disponibles)
-            mot_a_envoyer = "\nMot du jour pour Margot Ferry : " + mot.encode('latin1').decode('utf-8')
+            mot_a_envoyer = "\nMot du jour pour Margot Ferry : " + mot
 
             # Ajouter le mot aux mots utilisés et l'enlever des mots disponibles
             mots_disponibles.remove(mot)
