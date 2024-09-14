@@ -12,8 +12,8 @@ load_dotenv()
 lastname = get_lastname_json()
 tab_celebrations = get_day_celebration()
 str_celebrations = ''
-fichier_mots = "mot_liste.txt"
-fichier_mots_utilises = "mot_utilise.txt"
+fichier_mots = "/home/pi/Documents/InternationDay/mot_liste.txt"
+fichier_mots_utilises = "/home/pi/Documents/InternationDay/mot_utilise.txt"
 
 def charger_liste(fichier):
     try:
